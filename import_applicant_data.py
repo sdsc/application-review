@@ -49,4 +49,4 @@ for path, subdirs, files in os.walk(root):
 								Gender = "M"
 							else:
 								Gender = "O"
-							print ("INSERT INTO reference (ApplicationID,Name,Gender) VALUES (",ApplicationID,",",Name,",",Gender,");")
+							print ("INSERT INTO applicant (ApplicationID,Name,Gender) VALUES (",ApplicationID,",",Name,",",Gender,");")
