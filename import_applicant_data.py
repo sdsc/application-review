@@ -19,12 +19,16 @@ root = "/scratch/slocal/rehs"
 pattern = "*Applicant Information*"
 
 dictvalue = 0
-Name =""
 EvaluatorDict = {}
 for path, subdirs, files in os.walk(root):
 	for name in files:
 		if fnmatch(name, pattern):
 			splitfilename = name.split('-',4)
+			splitpath=path.split('/',4)
+			chunkname=splitpath[4].split(',',3)
+			LastName=chunkname[0].replace(",","")
+			tempFirstName=chunkname[1].split(' ',2)
+			FirstName=tempFirstName[1]
 			ApplicationID = (splitfilename[0])
 			fullpath = os.path.join(path, name)
 
@@ -49,4 +53,4 @@ for path, subdirs, files in os.walk(root):
 								Gender = "M"
 							else:
 								Gender = "O"
-							print ("INSERT INTO applicant (ApplicationID,Name,Gender) VALUES (",ApplicationID,",",Name,",",Gender,");")
+							print ("INSERT INTO applicant (ApplicationID,FirstName,LastName,Gender) VALUES (",ApplicationID,",\"",FirstName,"\",\"",LastName,"\",\"",Gender,"\");",sep="")

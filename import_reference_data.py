@@ -166,5 +166,5 @@ for path, subdirs, files in os.walk(root):
 						if not nextline.isspace():
 							print ("UPDATE reference SET Q18=",NormalizeReply(nextline.strip())," WHERE ApplicationID=",ApplicationID," AND ReferenceID=",ReferenceID,";")
 					if match19:
-						commentline += nextline.replace('"','\\"')
+						commentline += nextline.replace("\"","\\\"").replace("?","\'")
 			print ("UPDATE reference SET Comments=\"",commentline,"\" WHERE ApplicationID=",ApplicationID," AND ReferenceID=",ReferenceID,";")
